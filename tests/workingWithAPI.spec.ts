@@ -2,34 +2,13 @@ import { test, expect } from '@playwright/test';
 import tags from '../test-data/tags.json';
 
 test.beforeEach(async ({ page }) => {
-  // await page.route('https://conduit.productionready.io/api/tags', async route => {
   await page.route('*/**/api/tags', async route => {
     await route.fulfill({
       body: JSON.stringify(tags)
     })
   });
 
-  // await page.route('*/**/api/articles*', async route => {
-  //   const response = await route.fetch();
-  //   const responseBody = await response.json();
-  //   responseBody.articles[0].title = "This is a test title";
-  //   responseBody.articles[0].description = "This is a description";
-
-  //   await route.fulfill({
-  //     body: JSON.stringify(responseBody)
-  //   });
-  // });
-  // await page.waitForTimeout(1000);
-
   await page.goto('https://conduit.bondaracademy.com/');
-  // await page.goto('https://angular.realworld.io/');
-  // await page.goto('https://conduit-api.bondaracademy.com/');
-  // await page.goto('https://angular.realworld.io/');
-
-  // await page.getByText('Sign in').click();
-  // await page.getByRole('textbox', {name: 'Email'}).fill("testrbvaleriibahno@gmail.com");
-  // await page.getByRole('textbox', {name: 'Password'}).fill("Valerii_test123!");
-  // await page.getByRole('button').click();
 });
 
 test('has title', async ({ page }) => {
