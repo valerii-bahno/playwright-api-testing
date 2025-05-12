@@ -11,6 +11,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+
+    - name: Install playwright
+      run: npx playwright install
     
     - name: Run tests
       run: npx playwright test "workingWithAPI.spec.ts" -g "Create\s+and\s+delete\s+article\s+via\s+API$"
