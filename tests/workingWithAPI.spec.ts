@@ -1,4 +1,4 @@
-import { test, expect, request } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import tags from '../test-data/tags.json';
 
 test.beforeEach(async ({ page }) => {
@@ -53,7 +53,7 @@ test('has title', async ({ page }) => {
   await expect(page.locator('app-article-list p').first()).toContainText('This is a MOCK description');
 });
 
-test('Delete article via UI', async ({page, request}) => {
+test('Delete article via UI', async ({ page, request }) => {
   const articleResponse = await request.post('https://conduit-api.bondaracademy.com/api/articles/', {
     data: {
       "article":{"title":"New title","description":"New description","body":"New article was published","tagList":[]}
@@ -72,7 +72,7 @@ test('Delete article via UI', async ({page, request}) => {
   await expect(page.locator('app-article-list p').first()).not.toContainText('New description');
 });
 
-test.only('Create and delete article via API', async({request}) => {
+test('Create and delete article via API', async({ request }) => {
   const articleResponse = await request.post('https://conduit-api.bondaracademy.com/api/articles/', {
     data: {
       "article":{"title":"Playwright is awesome","description":"About the Playwright","body":"We like to use playwright for automation","tagList":[]}
