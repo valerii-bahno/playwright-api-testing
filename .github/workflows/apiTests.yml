@@ -8,7 +8,6 @@ jobs:
   build1:
     runs-on: ubuntu-latest
     steps:
-    # - uses: actions/checkout@v4
     - name: Print hello world
     - run: echo 'Hello World1'
 
