@@ -13,6 +13,7 @@ jobs:
 
   build2:
     runs-on: ubuntu-latest
+    needs: [build1]
     steps:
     - name: Print hello world
       run: echo 'Hello World2'
