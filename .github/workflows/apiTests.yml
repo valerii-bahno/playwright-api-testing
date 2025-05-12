@@ -33,12 +33,22 @@ jobs:
   build2:
     runs-on: ubuntu-latest
     needs: [build1]
+    env:
+      VAR1: "Local var1"
+      VAR2: "Local var2"
     steps:
     - name: Print hello world
       run: echo 'Hello World2'
+    - name: Print env vars
+      run: |
+        echo "Var1 = $VAR1"
+        echo "Var2 = $VAR2"
+        echo "Var3 = $LOCAL_VAR"
+      env:
+        LOCAL_VAR: 'Local var in steps'
     - name: Print deployment package
       run: echo "Deployment package name is $DEPLOY_PACKAGE_NAME"
     - name: Let's test some package if there is one here 1
       run: aws --version
     - name: Let's test some package if there is one here 2
-      run: zip
+      run: zip --version
