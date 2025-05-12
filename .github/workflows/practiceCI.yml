@@ -1,4 +1,4 @@
-name: Api_tests
+name: practice_run_ci
 env:
   APPLICATION_NAME: "MyEnv"
   DEPLOY_PACKAGE_NAME: "deploy-ver-${{ github.sha }}"
@@ -27,7 +27,7 @@ jobs:
     - name: Git clone my repo
       uses: actions/checkout@v4
 
-    - name: List current folder2
+    - name: List current folder
       run: ls -la
 
   job_2:
