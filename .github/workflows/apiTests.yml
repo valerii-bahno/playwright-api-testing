@@ -1,4 +1,8 @@
 name: Api_tests
+env:
+  APPLICATION_NAME: "MyEnv"
+  DEPLOY_PACKAGE_NAME: "deploy-ver-$({ github.sha })"
+  
 on: 
   push:
     branches:
@@ -10,6 +14,12 @@ jobs:
     steps:
     - name: Print hello world
       run: echo 'Hello World1'
+      
+    - name: Execute few commands
+      run: |
+        echo 'Hello Message1'
+        echo 'Hello Message2'
+        echo "Application name: $({ env.APPLICATION_NAME })"
 
   build2:
     runs-on: ubuntu-latest
@@ -17,3 +27,5 @@ jobs:
     steps:
     - name: Print hello world
       run: echo 'Hello World2'
+    - name: Print deployment package
+      run: echo "Deployment package name is $({ env.DEPLOY_PACKAGE_NAME })"
