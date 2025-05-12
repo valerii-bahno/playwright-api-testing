@@ -15,11 +15,11 @@ jobs:
     - name: Print hello world
       run: echo 'Hello World1'
       
-    - name: Execute few commands
+    - name: Execute a few commands
       run: |
         echo 'Hello Message1'
         echo 'Hello Message2'
-        echo "Application name: $({ env.APPLICATION_NAME })"
+        echo "Application name: $APPLICATION_NAME"
 
   build2:
     runs-on: ubuntu-latest
@@ -28,4 +28,4 @@ jobs:
     - name: Print hello world
       run: echo 'Hello World2'
     - name: Print deployment package
-      run: echo "Deployment package name is $({ env.DEPLOY_PACKAGE_NAME })"
+      run: echo "Deployment package name is $DEPLOY_PACKAGE_NAME"
