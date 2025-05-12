@@ -1,0 +1,54 @@
+name: practice_run_ci
+env:
+  APPLICATION_NAME: "MyEnv"
+  DEPLOY_PACKAGE_NAME: "deploy-ver-${{ github.sha }}"
+  
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print hello world
+      run: echo 'Hello World1'
+      
+    - name: Execute a few commands
+      run: |
+        echo 'Hello Message1'
+        echo 'Hello Message2'
+        echo "Application name: $APPLICATION_NAME"
+
+    - name: List current folder
+      run: ls -la
+
+    - name: Git clone my repo
+      uses: actions/checkout@v4
+
+    - name: List current folder
+      run: ls -la
+
+  job_2:
+    runs-on: ubuntu-latest
+    needs: [job_1]
+    env:
+      VAR1: "Local var1"
+      VAR2: "Local var2"
+    steps:
+    - name: Print hello world
+      run: echo 'Hello World2'
+    - name: Print env vars
+      run: |
+        echo "Var1 = $VAR1"
+        echo "Var2 = $VAR2"
+        echo "Var3 = $LOCAL_VAR"
+      env:
+        LOCAL_VAR: 'Local var in steps'
+    - name: Print deployment package
+      run: echo "Deployment package name is $DEPLOY_PACKAGE_NAME"
+    - name: Let's test some package if there is one here 1
+      run: aws --version
+    - name: Let's test some package if there is one here 2
+      run: zip --version
