@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Print hello world
-    - run: echo 'Hello World1'
+      run: echo 'Hello World1'
 
   build2:
     runs-on: ubuntu-latest
     steps:
     - name: Print hello world
-    - run: echo 'Hello World2'
+      run: echo 'Hello World2'
