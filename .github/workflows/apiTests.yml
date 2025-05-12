@@ -1,7 +1,7 @@
 name: Api_tests
 env:
   APPLICATION_NAME: "MyEnv"
-  DEPLOY_PACKAGE_NAME: "deploy-ver-$({{ github.sha }})"
+  DEPLOY_PACKAGE_NAME: "deploy-ver-${{ github.sha }}"
   
 on: 
   push:
