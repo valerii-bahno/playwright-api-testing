@@ -34,8 +34,6 @@
 // export default globalSetup;
 
 import { request, expect, FullConfig, chromium } from '@playwright/test';
-// import user from '../playwright-api-testing/.auth/userSession.json';
-import fs from 'fs';
 
 const authFile = '.auth/userSession.json';
 
@@ -53,19 +51,14 @@ async function globalSetup(config: FullConfig) {
       });
     
     const responseBody = await responseToken.json();
-    const accessToken = responseBody.user.token;
-
-    // user.origins[0].localStorage[0].value = accessToken;
-    // fs.writeFileSync(authFile, JSON.stringify(user));
+    process.env['ACCESS_TOKEN'] = responseBody.user.token;
 
     await page.goto('https://conduit.bondaracademy.com/');
     await page.evaluate((token) => {
       localStorage.setItem('jwtToken', token);
-    }, accessToken);
+    }, process.env.ACCESS_TOKEN as string);
 
-  await context.storageState({ path: authFile });
-
-    process.env['ACCESS_TOKEN'] = accessToken;
+    await context.storageState({ path: authFile });
 
     const articleResponse = await contextApi.post('https://conduit-api.bondaracademy.com/api/articles/', {
             data: {
