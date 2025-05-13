@@ -33,13 +33,13 @@
 
 // export default globalSetup;
 
-import { request, expect, FullConfig } from '@playwright/test';
+import { request, expect, FullConfig, chromium } from '@playwright/test';
 // import user from '../playwright-api-testing/.auth/userSession.json';
 import fs from 'fs';
 
 const authFile = '.auth/userSession.json';
 
-async function globalSetup(config: FullConfig, chromium) {
+async function globalSetup(config: FullConfig) {
     const contextApi = await request.newContext();
 
     const browser = await chromium.launch();
