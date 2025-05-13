@@ -47,19 +47,25 @@ export default defineConfig({
     {
       name: 'regression',
       testIgnore: 'likesCounter.spec.ts',
-      use: { ...devices['Desktop Chrome'], storageState: '.auth/userSession.json' },
+      use: { ...devices['Desktop Chrome'], 
+        // storageState: '.auth/userSession.json' 
+      },
       dependencies: ['setup']
     },
     {
       name: 'likesCounter',
       testMatch: 'likesCounter.spec.ts',
-      use: { ...devices['Desktop Chrome'], storageState: '.auth/userSession.json' },
+      use: { ...devices['Desktop Chrome'], 
+        // storageState: '.auth/userSession.json' 
+      },
       dependencies: ['articleSetup']
     },
     {
       name: 'likesCounterGlobal',
       testMatch: 'likesCounterGlobal.spec.ts',
-      use: { ...devices['Desktop Chrome'], storageState: '.auth/userSession.json' }
+      use: { ...devices['Desktop Chrome'], 
+        // storageState: '.auth/userSession.json' 
+      }
     }
   ]
 });
