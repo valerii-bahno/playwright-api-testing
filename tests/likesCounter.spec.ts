@@ -1,7 +1,6 @@
 import { test, expect } from "playwright/test";
 
 test('Like counter increase', async({ page }) => {
-
     await page.goto('https://conduit.bondaracademy.com/');
     await page.waitForSelector('.nav-pills');
     await page.getByText('Global Feed').click();

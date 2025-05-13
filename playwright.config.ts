@@ -1,13 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
-
-
 import dotenv from 'dotenv';
 dotenv.config();
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
+  timeout: 1 * 60 * 1000,
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -22,13 +18,14 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     trace: 'retain-on-failure',
+    screenshot: 'on-first-failure',
     ignoreHTTPSErrors: true,
     extraHTTPHeaders: {
       'Authorization': `Token ${process.env.ACCESS_TOKEN}`
     }
   },
-  // globalSetup: require.resolve('./global-setup.ts'),
-  // globalTeardown: require.resolve('./global-teardown.ts'),
+  globalSetup: require.resolve('./global-setup.ts'),
+  globalTeardown: require.resolve('./global-teardown.ts'),
 
   projects: [
     {
@@ -47,19 +44,19 @@ export default defineConfig({
     {
       name: 'regression',
       testIgnore: 'likesCounter.spec.ts',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], storageState: '.auth/userSession.json'  },
       dependencies: ['setup']
     },
     {
       name: 'likesCounter',
       testMatch: 'likesCounter.spec.ts',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], storageState: '.auth/userSession.json' },
       dependencies: ['articleSetup']
     },
     {
       name: 'likesCounterGlobal',
       testMatch: 'likesCounterGlobal.spec.ts',
-      use: { ...devices['Desktop Chrome'] }
+      use: { ...devices['Desktop Chrome'], storageState: '.auth/userSession.json' },
     }
   ]
 });

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:likesCounter": "npx playwright test likesCounter.spec.ts project=likesCounter",
-    "test:global": "npx playwright test project=likesCounterGlobal"
+    "test:likesCounter": "npx playwright test likesCounter.spec.ts --project=likesCounter",
+    "test:regression": "npx playwright test createDeleteArticle.spec.ts --project=regression",
+    "test:global": "npx playwright test --project=likesCounterGlobal"
   },
   "keywords": [],
   "author": "",
