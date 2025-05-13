@@ -1,4 +1,4 @@
-name: Api test run on CI
+name: Run tests on CI
 
 on: 
   push:
@@ -18,8 +18,14 @@ jobs:
     - name: Install playwright
       run: npx playwright install
     
-    - name: Run tests
+    - name: Run api test createDeleteArticle
       run: npx playwright test "createDeleteArticle.spec.spec.ts" --project=regression
+
+    - name: Run test likesCounter
+      run: npx playwright test likesCounter.spec.ts --project=likesCounter
+
+    - name: Run test likesCounterGlobal
+      run: npx playwright test --project=likesCounterGlobal
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
