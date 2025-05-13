@@ -10,7 +10,8 @@ async function globalSetup() {
       });
     
     const responseBody = await responseToken.json();
-    process.env['ACCESS_TOKEN'] = responseBody.user.token;
+    const accessToken = responseBody.user.token;
+    process.env['ACCESS_TOKEN'] = accessToken;
 
     const articleResponse = await context.post('https://conduit-api.bondaracademy.com/api/articles/', {
             data: {
