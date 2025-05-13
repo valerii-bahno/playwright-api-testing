@@ -41,7 +41,6 @@ test('Delete article via UI', async ({ page, request }) => {
 
   expect(articleResponse.status()).toEqual(201);
 
-
   await page.getByText('Global Feed').click();
   await page.getByText('New title').click();
   await page.getByRole('button', {name: 'Delete Article'}).first().click();
@@ -64,9 +63,7 @@ test('Create and delete article via API', async({ request }) => {
   expect(articleResponseBody.article.title).toEqual("Playwright is awesome");
   expect(articleResponseBody.article.description).toEqual("About the Playwright");
 
-  const slugId = articleResponseBody.article.slug;
-
-  const deleteArticleResponse = await request.delete(`https://conduit-api.bondaracademy.com/api/articles/${slugId}`);
+  const deleteArticleResponse = await request.delete(`https://conduit-api.bondaracademy.com/api/articles/${articleResponseBody.article.slug}`);
 
   expect(deleteArticleResponse.status()).toEqual(204);
 });
