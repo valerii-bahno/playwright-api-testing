@@ -27,8 +27,8 @@ export default defineConfig({
       'Authorization': `Token ${process.env.ACCESS_TOKEN}`
     }
   },
-  globalSetup: require.resolve('./global-setup.ts'),
-  globalTeardown: require.resolve('./global-teardown.ts'),
+  // globalSetup: require.resolve('./global-setup.ts'),
+  // globalTeardown: require.resolve('./global-teardown.ts'),
 
   projects: [
     {
