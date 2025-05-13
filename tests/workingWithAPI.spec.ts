@@ -49,21 +49,3 @@ test('Delete article via UI', async ({ page, request }) => {
   await expect(page.locator('app-article-list h1').first()).not.toContainText('New title');
   await expect(page.locator('app-article-list p').first()).not.toContainText('New description');
 });
-
-test('Create and delete article via API', async({ request }) => {
-  const articleResponse = await request.post('https://conduit-api.bondaracademy.com/api/articles/', {
-    data: {
-      "article":{"title":"Playwright is awesome","description":"About the Playwright","body":"We like to use playwright for automation","tagList":[]}
-    }
-  });
-
-  const articleResponseBody = await articleResponse.json();
-
-  expect(articleResponse.status()).toEqual(201);
-  expect(articleResponseBody.article.title).toEqual("Playwright is awesome");
-  expect(articleResponseBody.article.description).toEqual("About the Playwright");
-
-  const deleteArticleResponse = await request.delete(`https://conduit-api.bondaracademy.com/api/articles/${articleResponseBody.article.slug}`);
-
-  expect(deleteArticleResponse.status()).toEqual(204);
-});

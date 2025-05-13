@@ -19,7 +19,7 @@ jobs:
       run: npx playwright install
     
     - name: Run tests
-      run: npx playwright test "workingWithAPI.spec.ts" -g "Create\s+and\s+delete\s+article\s+via\s+API$"
+      run: npx playwright test "createDeleteArticle.spec.spec.ts" --project=regression
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
