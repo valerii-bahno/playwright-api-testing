@@ -67,7 +67,7 @@ async function globalSetup(config: FullConfig) {
 
     process.env['ACCESS_TOKEN'] = accessToken;
 
-    const articleResponse = await context.post('https://conduit-api.bondaracademy.com/api/articles/', {
+    const articleResponse = await contextApi.post('https://conduit-api.bondaracademy.com/api/articles/', {
             data: {
               "article":{"title":"Global Likes test article","description":"This is a global test description","body":"This is a global body of new article","tagList":[]}
             },

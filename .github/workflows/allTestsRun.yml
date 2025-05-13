@@ -23,7 +23,7 @@ jobs:
       run: npx playwright install
     
     - name: Run api test createDeleteArticle
-      run: npx playwright test "createDeleteArticle.spec.spec.ts" --project=regression
+      run: npx playwright test "createDeleteArticle.spec.ts" --project=regression
 
     - name: Run test likesCounter
       run: npx playwright test likesCounter.spec.ts --project=likesCounter
