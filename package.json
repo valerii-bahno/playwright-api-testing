@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test:likesCounter": "npx playwright test likesCounter.spec.ts --project=likesCounter",
-    "test:regression": "npx playwright test createDeleteArticle.spec.ts --project=regression",
+    "test:regression": "npx playwright test crudArticle.spec.spec.ts --project=regression",
     "test:global": "npx playwright test --project=likesCounterGlobal"
   },
   "keywords": [],
