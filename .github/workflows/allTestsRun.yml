@@ -23,7 +23,7 @@ jobs:
       run: npx playwright install
     
     - name: Run api test crudArticle.spec
-      run: npx playwright test "crudArticle.spec.spec.ts" --project=regression
+      run: npx playwright test "crudArticle.spec.ts" --project=regression
 
     - name: Run test likesCounter
       run: npx playwright test likesCounter.spec.ts --project=likesCounter
