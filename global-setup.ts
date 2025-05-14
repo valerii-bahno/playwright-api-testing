@@ -1,8 +1,8 @@
-import { request, expect, FullConfig, chromium } from '@playwright/test';
+import { request, expect, chromium } from '@playwright/test';
 
 const authFile = '.auth/userSession.json';
 
-async function globalSetup(config: FullConfig) {
+async function globalSetup() {
     const contextApi = await request.newContext();
 
     const browser = await chromium.launch();
