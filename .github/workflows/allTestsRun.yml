@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 env:
   LOGIN_USER: ${{ secrets.LOGIN_USER }}
