@@ -1,4 +1,4 @@
-name: Run tests on CI
+name: Regression Run api tests
 
 on: 
   push:
